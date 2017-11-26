@@ -65,8 +65,6 @@ namespace Proyecto2Consola
             Random r = new Random();
             logIn.Acceso = r.Next(0, 4);
 
-
-
             Console.Read();
         }
     }
