@@ -63,8 +63,7 @@ namespace Proyecto2Consola
             Console.WriteLine();
             Subjetct_Proxy logIn = new Subjetct_Proxy();
             Random r = new Random();
-            logIn.Acceso = r.Next(0, 4);
-
+            logIn.Acceso = r.Next(0, 4);            
 
 
             Console.Read();
