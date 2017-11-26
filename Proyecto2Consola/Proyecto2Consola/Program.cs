@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Proyecto1.Modelo;
 using Proyecto1.Controlador;
+using Proyecto2Consola.Controlador_central;
 
 namespace Proyecto2Consola
 {
@@ -55,6 +56,16 @@ namespace Proyecto2Consola
 
                 Console.WriteLine("||||||||" + g.getSesion().MiembrosAsistencia.ListaAsistencia.ElementAt(i) + "||||||||");
             }
+            Console.WriteLine();
+            Console.WriteLine("┌─────────────────────────┐");
+            Console.WriteLine("│     PRUEBA FACADE       │");
+            Console.WriteLine("└─────────────────────────┘");
+            Console.WriteLine();
+            Subjetct_Proxy logIn = new Subjetct_Proxy();
+            Random r = new Random();
+            logIn.Acceso = r.Next(0, 4);
+
+
 
             Console.Read();
         }
