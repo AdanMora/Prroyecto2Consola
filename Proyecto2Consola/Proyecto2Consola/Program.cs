@@ -56,14 +56,16 @@ namespace Proyecto2Consola
 
                 Console.WriteLine("||||||||" + g.getSesion().MiembrosAsistencia.ListaAsistencia.ElementAt(i) + "||||||||");
             }
-            Console.WriteLine();
-            Console.WriteLine("┌─────────────────────────┐");
-            Console.WriteLine("│     PRUEBA FACADE       │");
-            Console.WriteLine("└─────────────────────────┘");
-            Console.WriteLine();
-            Subjetct_Proxy logIn = new Subjetct_Proxy();
-            Random r = new Random();
-            logIn.Acceso = r.Next(0, 4);
+
+
+            Proxy proxy = new Proxy("sc","sc");
+            Quorum.Instance.registrarObserver(proxy);
+
+            Console.WriteLine("Quorum actual: " + Quorum.Instance.getQuorum());
+
+            proxy.modificarAsistencia("kirs@gmail.com", true);
+
+            proxy.modificarAsistencia("kirs@gmail.com", false);
 
             Console.Read();
         }

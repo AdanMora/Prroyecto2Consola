@@ -1,12 +1,254 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Proyecto1.Controlador;
+using Proyecto1.Modelo;
 
 namespace Proyecto2Consola.Controlador_central
 {
-    class Proxy
+    class Proxy : Observer, Subject_Proxy
     {
+        Subject_Proxy fachada;
+        const int fachadaM = 0;
+        const int fachadaSC = 1;
+        const int fachadaPC = 2;
+
+        UberController controller = new UberController();
+        bool logueado = false;
+
+        public Proxy(string usuario, string contrasena)
+        {
+            bool resultado = login(usuario, contrasena);
+
+            if (resultado)
+            {
+                logueado = true;
+            } else
+            {
+                fachada = null;
+                logueado = false;
+            }
+
+        }
+
+        public bool login(string usuario, string contrasena)
+        {
+            if (usuario == contrasena)
+            {
+                if (usuario == "sc")
+                {
+                    setFachada(fachadaSC);
+                    return true;
+                } else
+                {
+                    foreach (Miembro m in controller.getMiembrosConsejo())
+                    {
+                        if (m.Correo.Contains(usuario))
+                        {
+                            if (usuario == controller.PC)
+                            {
+                                setFachada(fachadaPC);
+                            } else
+                            {
+                                setFachada(fachadaM);
+                            }
+
+                            return true;
+
+                        }
+                    }
+                }
+                
+            }
+
+            return false;
+        }
+
+        public void setFachada(int tipo)
+        {
+            switch (tipo)
+            {
+                case fachadaM:
+                    fachada = new Facade_M();
+                    break;
+
+                case fachadaSC:
+                    fachada = new Facade_SC();
+                break;
+
+                case fachadaPC:
+                    fachada = new Facade_PC();
+                    break;
+            }
+        }
+        
+
+        public void aceptarSolicitud(int id)
+        {
+            fachada.aceptarSolicitud(id);
+        }
+
+        public void actualizarMiembros(string path)
+        {
+            fachada.actualizarMiembros(path);
+        }
+
+        public void agregarComentario(int idPunto, string correoMiembro, string txt)
+        {
+            fachada.agregarComentario(idPunto, correoMiembro, txt);
+        }
+
+        public void agregarPuntoAgenda(string nombre, string resultando, string considerandos, string seAcuerda, char tipo)
+        {
+            fachada.agregarPuntoAgenda(nombre, resultando, considerandos, seAcuerda, tipo);
+        }
+
+        public void agregarSolicitud(string nombre, string resultando, string considerandos, string seAcuerda, char tipo)
+        {
+            fachada.agregarSolicitud(nombre, resultando, considerandos, seAcuerda, tipo);
+        }
+
+        public void agregarVotacion(int id, int aFavor, int enContra, int blanco)
+        {
+            fachada.agregarVotacion(id, aFavor, enContra, blanco);
+        }
+
+        public void asociarActa(string numSesion, string path, string nombreArchivo)
+        {
+            fachada.asociarActa(numSesion, path, nombreArchivo);
+        }
+
+        public void asociarAdjunto(int idPunto, string path, string nombreArchivo, string extension)
+        {
+            fachada.asociarAdjunto(idPunto, path, nombreArchivo, extension);
+        }
+
+        public void cambiarPosicionPunto(int posicionNueva, int posicionVieja)
+        {
+            fachada.cambiarPosicionPunto(posicionNueva, posicionVieja);
+        }
+
+        public void cerrarSesion()
+        {
+            fachada.cerrarSesion();
+        }
+
+        public void crearActa(int tipo, string path)
+        {
+            fachada.crearActa(tipo, path);
+        }
+
+        public void crearAcuerdo(PuntoAgenda punto, string destinatario, string path)
+        {
+            fachada.crearAcuerdo(punto, destinatario, path);
+        }
+
+        public void crearAgenda(string sesion, string path)
+        {
+            fachada.crearAgenda(sesion, path);
+        }
+
+        public void eliminarPuntoAgenda(int id)
+        {
+            fachada.eliminarPuntoAgenda(id);
+        }
+
+        public void modificarAsistencia(string correoMiembro, bool estado)
+        {
+            fachada.modificarAsistencia(correoMiembro, estado);
+        }
+
+        public Collection<PuntoAgenda> getSolicitudes()
+        {
+            return fachada.getSolicitudes();
+        }
+
+        public Collection<PuntoAgenda> getPuntosAgenda()
+        {
+            return fachada.getPuntosAgenda();
+        }
+
+        public Prototype_Miembros getAsistencia()
+        {
+            return fachada.getAsistencia();
+        }
+
+        public Collection<Miembro> getMiembrosConsejo()
+        {
+            return fachada.getMiembrosConsejo();
+        }
+
+        public Collection<Comentario> getComentarios(int idPunto)
+        {
+            return fachada.getComentarios(idPunto);
+        }
+
+        public bool haySesion()
+        {
+            return fachada.haySesion();
+        }
+
+        public Collection<string> getAllNumeroSesiones()
+        {
+            return fachada.getAllNumeroSesiones();
+        }
+
+        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo)
+        {
+            fachada.enviarNotificacion(numeroSesion, fecha, correo);
+        }
+
+        public void enviarAgenda(string numeroSesion, DateTime fecha, string correo, string agenda)
+        {
+            fachada.enviarAgenda(numeroSesion, fecha, correo, agenda);
+        }
+
+        public void obtenerAgenda(Sesion sesion, string path)
+        {
+            fachada.obtenerAgenda(sesion, path);
+        }
+
+        public void obtenerActa(string numSesion, string path)
+        {
+            fachada.obtenerActa(numSesion, path);
+        }
+
+        public Collection<String> getAdjuntos(int idPunto)
+        {
+            return fachada.getAdjuntos(idPunto);
+        }
+
+        public void obtenerAdjunto(int idPunto, string nombreAdjunto, string path)
+        {
+            fachada.obtenerAdjunto(idPunto, nombreAdjunto, path);
+        }
+
+        public Sesion getSesion()
+        {
+            return fachada.getSesion();
+        }
+
+        public Sesion getSesion(string numero)
+        {
+            return fachada.getSesion(numero);
+        }
+
+        public void notificarCambioQuorum()
+        {
+            Console.WriteLine(Quorum.Instance.getQuorum());
+        }
+
+        public void nuevaSesion(string num, DateTime fecha, string lugar)
+        {
+            fachada.nuevaSesion(num, fecha, lugar);
+        }
+
+        public void eliminarSolicitud(int id)
+        {
+            fachada.eliminarSolicitud(id);
+        }
     }
 }
