@@ -55,7 +55,7 @@ namespace Proyecto2Consola.Controlador_central
 
         Collection<string> getAllNumeroSesiones();
 
-        void enviarNotificacion(string numeroSesion, DateTime fecha, string correo);
+        void enviarNotificacion(string numeroSesion, DateTime fecha, string correo,string pathMemo);
 
         void enviarAgenda(string numeroSesion, DateTime fecha, string correo, string agenda);
 

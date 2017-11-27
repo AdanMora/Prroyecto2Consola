@@ -204,9 +204,9 @@ namespace Proyecto2Consola.Controlador_central
             return fachada.getAllNumeroSesiones();
         }
 
-        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo)
+        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo,string pathMemo)
         {
-            fachada.enviarNotificacion(numeroSesion, fecha, correo);
+            fachada.enviarNotificacion(numeroSesion, fecha, correo,pathMemo);
         }
 
         public void enviarAgenda(string numeroSesion, DateTime fecha, string correo, string agenda)

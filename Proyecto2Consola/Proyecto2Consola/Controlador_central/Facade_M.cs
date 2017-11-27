@@ -170,7 +170,7 @@ namespace Proyecto2Consola.Controlador_central
             throw new NotImplementedException();
         }
 
-        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo)
+        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo,string pathMemo)
         {
             throw new NotImplementedException();
         }

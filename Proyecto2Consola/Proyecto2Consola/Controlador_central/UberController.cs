@@ -154,9 +154,9 @@ namespace Proyecto2Consola.Controlador_central
             return g.getAllNumeroSesiones();
         }
 
-        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo)
+        public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo,string pathMemo)
         {
-            g.enviarNotificacion(numeroSesion, fecha, correo);
+            g.enviarNotificacion(numeroSesion, fecha, correo, pathMemo);
         }
 
         public void enviarAgenda(string numeroSesion, DateTime fecha, string correo, string agenda)
