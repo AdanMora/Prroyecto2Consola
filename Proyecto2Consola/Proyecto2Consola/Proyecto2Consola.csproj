@@ -57,15 +57,19 @@
     <Compile Include="Controlador_central\Facade_M.cs" />
     <Compile Include="Controlador_central\Facade_PC.cs" />
     <Compile Include="Controlador_central\Facade_SC.cs" />
+    <Compile Include="Controlador_central\Observer.cs" />
     <Compile Include="Controlador_central\Proxy.cs" />
     <Compile Include="Controlador_central\Quorum.cs" />
-    <Compile Include="Controlador_central\Subjetct_Proxy.cs" />
+    <Compile Include="Controlador_central\Subject_Observer.cs" />
+    <Compile Include="Controlador_central\Subject_Proxy.cs" />
     <Compile Include="Controlador_central\UberController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
