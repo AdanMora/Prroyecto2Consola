@@ -131,7 +131,7 @@ namespace Proyecto2Consola.Controlador_central
             throw new NotImplementedException();
         }
 
-        public void crearActa(int tipo, string path)
+        public void crearActa(string numSesion, int tipo, string path)
         {
             throw new NotImplementedException();
         }

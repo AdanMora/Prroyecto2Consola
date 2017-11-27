@@ -147,9 +147,9 @@ namespace Proyecto2Consola.Controlador_central
             fachada.cerrarSesion();
         }
 
-        public void crearActa(int tipo, string path)
+        public void crearActa(string numSesion, int tipo, string path)
         {
-            fachada.crearActa(tipo, path);
+            fachada.crearActa(numSesion, tipo, path);
         }
 
         public void crearAcuerdo(PuntoAgenda punto, string destinatario, string path)

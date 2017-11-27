@@ -35,7 +35,7 @@ namespace Proyecto2Consola.Controlador_central
 
         void crearAgenda(string sesion, string path);
 
-        void crearActa(int tipo, string path);
+        void crearActa(string numSesion, int tipo, string path);
 
         void modificarAsistencia(string correoMiembro, bool estado);
 

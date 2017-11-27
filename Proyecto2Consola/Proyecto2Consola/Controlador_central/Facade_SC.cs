@@ -60,9 +60,9 @@ namespace Proyecto2Consola.Controlador_central
         {
             controller.crearAgenda(sesion, path);
         }
-        public void crearActa(int tipo, string path)
+        public void crearActa(string numSesion, int tipo, string path)
         {
-            controller.crearActa(tipo, path);
+            controller.crearActa(numSesion, tipo, path);
         }
 
         public void modificarAsistencia(string correoMiembro, bool estado)
