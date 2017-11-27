@@ -9,15 +9,19 @@ using Proyecto1.Modelo;
 
 namespace Proyecto2Consola.Controlador_central
 {
-    class Proxy : Observer, Subject_Proxy
+    class Proxy : Observer, Subject_Proxy, Usuario_Chat
     {
         Subject_Proxy fachada;
         const int fachadaM = 0;
         const int fachadaSC = 1;
         const int fachadaPC = 2;
 
-        UberController controller = new UberController();
+        string usuario;
         bool logueado = false;
+
+        UberController controller = new UberController();
+
+        Mediator mediatorChat;
 
         public Proxy(string usuario, string contrasena)
         {
@@ -26,6 +30,7 @@ namespace Proyecto2Consola.Controlador_central
             if (resultado)
             {
                 logueado = true;
+                this.usuario = usuario;
             } else
             {
                 fachada = null;
@@ -41,6 +46,7 @@ namespace Proyecto2Consola.Controlador_central
                 if (usuario == "sc")
                 {
                     setFachada(fachadaSC);
+                    Console.WriteLine("SC conectado/a...");
                     return true;
                 } else
                 {
@@ -51,9 +57,11 @@ namespace Proyecto2Consola.Controlador_central
                             if (usuario == controller.PC)
                             {
                                 setFachada(fachadaPC);
+                                Console.WriteLine("PC conectado/a...");
                             } else
                             {
                                 setFachada(fachadaM);
+                                Console.WriteLine("Miembro conectado/a...");
                             }
 
                             return true;
@@ -249,6 +257,21 @@ namespace Proyecto2Consola.Controlador_central
         public void eliminarSolicitud(int id)
         {
             fachada.eliminarSolicitud(id);
+        }
+
+        public void enviarMensaje(string mensaje)
+        {
+            mediatorChat.enviarMensaje(mensaje, this.usuario);
+        }
+
+        public void recibirMensaje(string mensaje)
+        {
+            Console.WriteLine(mensaje);
+        }
+
+        public void setMediator(Mediator m)
+        {
+            mediatorChat = m;
         }
     }
 }

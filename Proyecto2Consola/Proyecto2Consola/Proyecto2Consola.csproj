@@ -53,16 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador_central\Chat_Mediator.cs" />
     <Compile Include="Controlador_central\Cliente.cs" />
     <Compile Include="Controlador_central\Facade_M.cs" />
     <Compile Include="Controlador_central\Facade_PC.cs" />
     <Compile Include="Controlador_central\Facade_SC.cs" />
+    <Compile Include="Controlador_central\Mediator.cs" />
     <Compile Include="Controlador_central\Observer.cs" />
     <Compile Include="Controlador_central\Proxy.cs" />
     <Compile Include="Controlador_central\Quorum.cs" />
     <Compile Include="Controlador_central\Subject_Observer.cs" />
     <Compile Include="Controlador_central\Subject_Proxy.cs" />
     <Compile Include="Controlador_central\UberController.cs" />
+    <Compile Include="Controlador_central\Usuario_Chat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

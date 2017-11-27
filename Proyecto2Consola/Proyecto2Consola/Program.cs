@@ -58,14 +58,40 @@ namespace Proyecto2Consola
             }
 
 
-            Proxy proxy = new Proxy("sc","sc");
-            Quorum.Instance.registrarObserver(proxy);
+            //Proxy proxy = new Proxy("sc","sc");
+            //Quorum.Instance.registrarObserver(proxy);
 
-            Console.WriteLine("Quorum actual: " + Quorum.Instance.getQuorum());
+            //Console.WriteLine("Quorum actual: " + Quorum.Instance.getQuorum());
 
-            proxy.modificarAsistencia("kirs@gmail.com", true);
+            //proxy.modificarAsistencia("kirs@gmail.com", true);
 
-            proxy.modificarAsistencia("kirs@gmail.com", false);
+            //proxy.modificarAsistencia("kirs@gmail.com", false);
+
+            Proxy proxySC = new Proxy("sc", "sc");
+
+            Proxy proxyM = new Proxy("kirs@gmail.com", "kirs@gmail.com");
+
+            Proxy proxyPC = new Proxy("aj@gmail.com", "aj@gmail.com");
+
+            Console.WriteLine("####################################################");
+
+            Chat_Mediator chat = new Chat_Mediator();
+
+            chat.agregarUsuario(proxyM);
+            chat.agregarUsuario(proxySC);
+            chat.agregarUsuario(proxyPC);
+
+            proxyM.enviarMensaje("Iván carepicha");
+
+            Console.WriteLine("-----------------------------------------");
+
+            proxySC.enviarMensaje("Iván el Trollazo");
+
+            Console.WriteLine("-----------------------------------------");
+
+            proxyPC.enviarMensaje("Iván agarrámelas que se me van");
+
+            Console.WriteLine("-----------------------------------------");
 
             Console.Read();
         }

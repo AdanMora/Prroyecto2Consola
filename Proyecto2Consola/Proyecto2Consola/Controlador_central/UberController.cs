@@ -31,6 +31,8 @@ namespace Proyecto2Consola.Controlador_central
                 Quorum.Instance.cargarQuorum();
             }
 
+            PC = "aj@gmail.com";
+
         }
 
         public String PC
