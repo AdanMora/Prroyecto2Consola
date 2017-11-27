@@ -14,48 +14,48 @@ namespace Proyecto2Consola
         static void Main(string[] args)
         {
 
-            Gestor g = new Gestor();
+            //Gestor g = new Gestor();
 
-            g.cargarDatos();
-            Console.WriteLine("\nConsejo - Carga de datos");
-            Console.WriteLine("\nMiembros");
-            foreach (Miembro m in g.getConsejo().Miembros)
-            {
-                Console.WriteLine(m.toString());
-            }
+            //g.cargarDatos();
+            //Console.WriteLine("\nConsejo - Carga de datos");
+            //Console.WriteLine("\nMiembros");
+            //foreach (Miembro m in g.getConsejo().Miembros)
+            //{
+            //    Console.WriteLine(m.toString());
+            //}
 
-            Console.WriteLine("\nSolicitudes");
-            foreach (PuntoAgenda p in g.getConsejo().Solicitudes)
-            {
-                Console.WriteLine(p.toString());
-            }
+            //Console.WriteLine("\nSolicitudes");
+            //foreach (PuntoAgenda p in g.getConsejo().Solicitudes)
+            //{
+            //    Console.WriteLine(p.toString());
+            //}
 
-            Console.WriteLine("\nSesiones");
-            foreach (Sesion s in g.getConsejo().Sesiones)
-            {
-                Console.WriteLine(s.toString());
+            //Console.WriteLine("\nSesiones");
+            //foreach (Sesion s in g.getConsejo().Sesiones)
+            //{
+            //    Console.WriteLine(s.toString());
 
-                foreach (PuntoAgenda p in s.Agenda)
-                {
-                    Console.WriteLine(p.toString());
+            //    foreach (PuntoAgenda p in s.Agenda)
+            //    {
+            //        Console.WriteLine(p.toString());
 
-                    foreach (Comentario c in p.Comentarios)
-                    {
-                        Console.WriteLine(c.toString());
-                    }
-                }
-            }
+            //        foreach (Comentario c in p.Comentarios)
+            //        {
+            //            Console.WriteLine(c.toString());
+            //        }
+            //    }
+            //}
 
-            Console.WriteLine("\nSesion Actual");
+            //Console.WriteLine("\nSesion Actual");
 
-            Console.WriteLine(g.getSesion().toString());
+            //Console.WriteLine(g.getSesion().toString());
 
-            for (int i = 0; i < g.getSesion().MiembrosAsistencia.Asistencia.Count; i++)
-            {
-                Console.WriteLine(g.getSesion().MiembrosAsistencia.Asistencia.ElementAt(i).toString());
+            //for (int i = 0; i < g.getSesion().MiembrosAsistencia.Asistencia.Count; i++)
+            //{
+            //    Console.WriteLine(g.getSesion().MiembrosAsistencia.Asistencia.ElementAt(i).toString());
 
-                Console.WriteLine("||||||||" + g.getSesion().MiembrosAsistencia.ListaAsistencia.ElementAt(i) + "||||||||");
-            }
+            //    Console.WriteLine("||||||||" + g.getSesion().MiembrosAsistencia.ListaAsistencia.ElementAt(i) + "||||||||");
+            //}
 
 
             //Proxy proxy = new Proxy("sc","sc");
@@ -76,6 +76,10 @@ namespace Proyecto2Consola
             Console.WriteLine("####################################################");
 
             Chat_Mediator chat = new Chat_Mediator();
+
+            proxyPC.setMediator(chat);
+            proxySC.setMediator(chat);
+            proxyM.setMediator(chat);
 
             chat.agregarUsuario(proxyM);
             chat.agregarUsuario(proxySC);

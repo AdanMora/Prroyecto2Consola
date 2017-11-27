@@ -61,10 +61,10 @@
     <Compile Include="Controlador_central\Mediator.cs" />
     <Compile Include="Controlador_central\Observer.cs" />
     <Compile Include="Controlador_central\Proxy.cs" />
-    <Compile Include="Controlador_central\Quorum.cs" />
+    <Compile Include="Controlador_central\UberController.cs" />
     <Compile Include="Controlador_central\Subject_Observer.cs" />
     <Compile Include="Controlador_central\Subject_Proxy.cs" />
-    <Compile Include="Controlador_central\UberController.cs" />
+    <Compile Include="Controlador_central\ControladorProyecto1.cs" />
     <Compile Include="Controlador_central\Usuario_Chat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

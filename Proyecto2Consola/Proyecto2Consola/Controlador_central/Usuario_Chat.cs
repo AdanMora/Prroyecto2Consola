@@ -14,5 +14,7 @@ namespace Proyecto2Consola.Controlador_central
         void recibirMensaje(string mensaje);
 
         void setMediator(Mediator m);
+
+        string getUsuario();
     }
 }

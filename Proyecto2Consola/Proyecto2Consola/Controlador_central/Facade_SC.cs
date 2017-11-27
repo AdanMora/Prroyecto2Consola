@@ -11,13 +11,13 @@ namespace Proyecto2Consola.Controlador_central
 {
     class Facade_SC : Subject_Observer, Subject_Proxy
     {
-        UberController controller;
+        ControladorProyecto1 controller;
 
         Collection<Observer> observers = new Collection<Observer>();
 
         public Facade_SC()
         {
-            controller = new UberController();
+            controller = UberController.Instance.getControlador();
         }
 
         public void acceso_Secretaria()
@@ -68,7 +68,7 @@ namespace Proyecto2Consola.Controlador_central
         public void modificarAsistencia(string correoMiembro, bool estado)
         {
             controller.modificarAsistencia(correoMiembro, estado);
-            Quorum.Instance.modificarQuorum(estado);
+            UberController.Instance.modificarQuorum(estado);
         }
 
         public void enviarNotificacion(string numeroSesion, DateTime fecha, string correo,string pathMemo)

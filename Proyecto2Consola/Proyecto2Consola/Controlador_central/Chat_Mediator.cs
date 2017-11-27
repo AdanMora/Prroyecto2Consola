@@ -22,7 +22,13 @@ namespace Proyecto2Consola.Controlador_central
         {
             foreach (Usuario_Chat u in usuarios)
             {
-                u.recibirMensaje(usuario + "said: " + mensaje);
+                if (u.getUsuario() == usuario)
+                {
+                    u.recibirMensaje("I said: " + mensaje);
+                } else
+                {
+                    u.recibirMensaje(usuario + "said: " + mensaje);
+                }
             }
         }
     }

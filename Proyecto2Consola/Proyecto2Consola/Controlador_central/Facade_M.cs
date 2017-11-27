@@ -11,13 +11,13 @@ namespace Proyecto2Consola.Controlador_central
 {
     class Facade_M : Subject_Observer, Subject_Proxy
     {
-        UberController controller;
+        ControladorProyecto1 controller;
 
         Collection<Observer> observers = new Collection<Observer>();
 
         public Facade_M()
         {
-            controller = new UberController();
+            controller = UberController.Instance.getControlador();
         }
         public void acceso_Miembro()
         {

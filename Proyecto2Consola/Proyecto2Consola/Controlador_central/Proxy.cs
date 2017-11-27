@@ -19,12 +19,14 @@ namespace Proyecto2Consola.Controlador_central
         string usuario;
         bool logueado = false;
 
-        UberController controller = new UberController();
+        ControladorProyecto1 controller;
 
         Mediator mediatorChat;
 
         public Proxy(string usuario, string contrasena)
         {
+            controller = UberController.Instance.getControlador();
+
             bool resultado = login(usuario, contrasena);
 
             if (resultado)
@@ -54,6 +56,7 @@ namespace Proyecto2Consola.Controlador_central
                     {
                         if (m.Correo.Contains(usuario))
                         {
+                            Console.WriteLine(usuario + " / " + controller.PC);
                             if (usuario == controller.PC)
                             {
                                 setFachada(fachadaPC);
@@ -246,7 +249,7 @@ namespace Proyecto2Consola.Controlador_central
 
         public void notificarCambioQuorum()
         {
-            Console.WriteLine(Quorum.Instance.getQuorum());
+            Console.WriteLine(UberController.Instance.getQuorum());
         }
 
         public void nuevaSesion(string num, DateTime fecha, string lugar)
@@ -272,6 +275,11 @@ namespace Proyecto2Consola.Controlador_central
         public void setMediator(Mediator m)
         {
             mediatorChat = m;
+        }
+
+        public string getUsuario()
+        {
+            return usuario;
         }
     }
 }
